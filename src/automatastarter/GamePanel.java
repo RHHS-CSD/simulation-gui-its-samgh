@@ -5,6 +5,7 @@
  */
 package automatastarter;
 
+import java.awt.Color;
 import utils.CardSwitcher;
 import utils.ImageUtil;
 import java.awt.Graphics;
@@ -34,8 +35,21 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
 
     public static final String CARD_NAME = "game";
 
-    CardSwitcher switcher; // This is the parent panel
+    CardSwitcher switcher; 
+    //This is the parent panel
     Timer animTimer;
+    //Constants for cell states
+    private static final int OFF = 0;
+    private static final int ON = 1;
+    private static final int DYING = 2;
+    // Size of each cell in the grid
+    private static final int CELL_SIZE = 15; 
+    
+    //Grid variables
+    int[][] grid;
+    int rows, columns;
+    
+    /*
     // Image img1 = Toolkit.getDefaultToolkit().getImage("yourFile.jpg");
     BufferedImage img1;
     //variables to control your animation elements
@@ -43,14 +57,17 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     int y = 10;
     int xdir = 5;
     int lineX = 0;
-
+    */
     /**
      * Creates new form GamePanel
      */
     public GamePanel(CardSwitcher p) {
         initComponents();
+        //setting rows and columns
+        this.rows = 40;
+        this.columns = 40;
 
-        img1 = ImageUtil.loadAndResizeImage("yourFile.jpg", 300, 300);//, WIDTH, HEIGHT)//ImageIO.read(new File("yourFile.jpg"));
+        //img1 = ImageUtil.loadAndResizeImage("yourFile.jpg", 300, 300);//, WIDTH, HEIGHT)//ImageIO.read(new File("yourFile.jpg"));
 
         this.setFocusable(true);
 
@@ -59,14 +76,20 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         //tells us the panel that controls this one
         switcher = p;
         //create and start a Timer for animation
-        animTimer = new Timer(10, new AnimTimerTick());
+        animTimer = new Timer(800, new AnimTimerTick());
         animTimer.start();
+        
+        //initializing the grid
+        grid = SimulationEngine.initializeGrid(rows, columns);
 
+        /* old code
         //set up the key bindings
         setupKeys();
+        */
 
     }
 
+    /*
     private void setupKeys() {
         //these lines map a physical key, to a name, and then a name to an 'action'.  You will change the key, name and action to suit your needs
         this.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "leftKey");
@@ -81,13 +104,45 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         this.getInputMap().put(KeyStroke.getKeyStroke("X"), "xKey");
         this.getActionMap().put("xKey", new Move("x"));
     }
+    */
 
     public void paintComponent(Graphics g) {
+        
+            // Loop through the grid and draw each cell
+            for (int row = 0; row < rows; row++) {
+                for (int col = 0; col < columns; col++) {
+                    int x = col * CELL_SIZE;
+                    int y = row * CELL_SIZE;
+
+                    // Set color based on cell state
+                    switch (grid[row][col]) {
+                        case ON:
+                            g.setColor(Color.GREEN);
+                            break;
+                        case DYING:
+                            g.setColor(Color.RED);
+                            break;
+                        case OFF:
+                        default:
+                            g.setColor(Color.WHITE);
+                            break;
+                    }
+
+                    // Draw the cell as a filled rectangle
+                    g.fillRect(x, y, CELL_SIZE, CELL_SIZE);
+
+                    // Draw grid lines
+                    g.setColor(Color.BLACK);
+                    g.drawRect(x, y, CELL_SIZE, CELL_SIZE);
+                }
+            }
+        /*
         super.paintComponent(g);
         if (img1 != null) {
             g.drawImage(img1, x, y, this);
         }
         g.drawLine(lineX, 0, 300, 300);
+        */
     }
 
     /**
@@ -100,6 +155,11 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        NumberOfDeads = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        NumberOfDyings = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        NumberOfAlives = new javax.swing.JLabel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -107,35 +167,92 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
             }
         });
 
-        jLabel1.setText("Game");
+        jLabel1.setText("Number of Deads:");
+
+        NumberOfDeads.setText("0");
+
+        jLabel2.setText("Number of Dyings:");
+
+        NumberOfDyings.setText("0");
+
+        jLabel3.setText("Number of Alives:");
+
+        NumberOfAlives.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jLabel1)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(672, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NumberOfDeads))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NumberOfDyings))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NumberOfAlives)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel1)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(NumberOfAlives))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(NumberOfDyings))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(NumberOfDeads))
+                .addContainerGap(1100, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        lineX = 0;
+        //lineX = 0;
     }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NumberOfAlives;
+    private javax.swing.JLabel NumberOfDeads;
+    private javax.swing.JLabel NumberOfDyings;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
+    // Method to toggle the cell state between OFF and ON (you can modify to include DYING if needed)
+    private void toggleCell(int row, int col) {
+        if (grid[row][col] == OFF) {
+            grid[row][col] = ON;
+        } else {
+            grid[row][col] = OFF;
+        }
+    }
+    
+    //updating grid
+    public void update(){
+       grid = SimulationEngine.applyRules(rows,columns,grid);
+       //getting the counts of On, Off or dying cells, the order: aliveCount, dyingCount, deadCount]
+       int[] count = SimulationEngine.getCellCounts(grid);
+       
+       NumberOfAlives.setText("" + count[0]);
+       NumberOfDyings.setText("" + count[1]);
+       NumberOfDeads.setText("" + count[2]);
+    }
+    
     /**
      * This event captures a click which is defined as pressing and releasing in
      * the same area
@@ -143,9 +260,14 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
      * @param me
      */
     public void mouseClicked(MouseEvent me) {
-        System.out.println("Click: " + me.getX() + ":" + me.getY());
-        x = 5;
-        y = 5;
+          //getting the location with regards to the cell
+        int x = me.getX() / CELL_SIZE;
+        int y = me.getY() / CELL_SIZE;
+        //if in the grid
+        if (x >= 0 && x < columns && y >= 0 && y < rows) {
+            toggleCell(y, x); // Toggle cell state
+            repaint();  // Repaint the panel to reflect the change
+       }
     }
 
     /**
@@ -187,6 +309,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     /**
      * Everything inside here happens when you click on a captured key.
      */
+    /*
     private class Move extends AbstractAction {
 
         String key;
@@ -209,16 +332,17 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         }
 
     }
+    */
 
     /**
      * Everything inside this actionPerformed will happen every time the
      * animation timer clicks.
      */
     private class AnimTimerTick implements ActionListener {
-
+        //using timer
         public void actionPerformed(ActionEvent ae) {
-            //the stuff we want to change every clock tick
-            lineX++;
+            //updating the grid
+            update();
             //force redraw
             repaint();
         }
