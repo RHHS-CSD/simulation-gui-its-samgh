@@ -42,12 +42,12 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     private static final int OFF = 0;
     private static final int ON = 1;
     private static final int DYING = 2;
-    // Size of each cell in the grid
-    private static final int CELL_SIZE = 15; 
     
     //Grid variables
     int[][] grid;
     int rows, columns;
+    // Size of each cell in the grid
+    private static int CELL_SIZE = 15; 
     
     /*
     // Image img1 = Toolkit.getDefaultToolkit().getImage("yourFile.jpg");
@@ -81,7 +81,11 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         
         //initializing the grid
         grid = SimulationEngine.initializeGrid(rows, columns);
-
+        
+        //setting the speed minimum(1) and maximum(20) for the slider
+        speedSlider.setMinimum(100);
+        speedSlider.setMaximum(1500);
+        
         /* old code
         //set up the key bindings
         setupKeys();
@@ -165,9 +169,20 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         NumberOfDyings = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         NumberOfAlives = new javax.swing.JLabel();
-        Start = new javax.swing.JButton();
-        Pause = new javax.swing.JButton();
-        Reset = new javax.swing.JButton();
+        startButton = new javax.swing.JButton();
+        pauseButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        speedSlider = new javax.swing.JSlider();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -197,61 +212,140 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
 
         NumberOfAlives.setText("0");
 
-        Start.setText("Start");
-        Start.addActionListener(new java.awt.event.ActionListener() {
+        startButton.setText("Start");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StartActionPerformed(evt);
+                startButtonActionPerformed(evt);
             }
         });
 
-        Pause.setText("Pause");
-        Pause.addActionListener(new java.awt.event.ActionListener() {
+        pauseButton.setText("Pause");
+        pauseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PauseActionPerformed(evt);
+                pauseButtonActionPerformed(evt);
             }
         });
 
-        Reset.setText("Reset");
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Speed Delay");
+
+        jLabel7.setText("Adding Common Patterns");
+
+        jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Add a Square in the Middle");
+
+        jLabel9.setText("Add a Blinker");
+
+        jButton2.setText("Add");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Add a Rhombus");
+
+        jButton3.setText("Add");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Set New Side Length");
+
+        jTextField1.setText("40");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(672, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pauseButton)
+                                .addComponent(resetButton)
+                                .addComponent(startButton))
+                            .addGap(56, 56, 56))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(22, 22, 22)))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addGap(39, 39, 39))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(61, 61, 61))))
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap(600, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel9)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton2)
+                                        .addComponent(jButton1)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(jButton3)))
+                            .addGap(48, 48, 48))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(speedSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NumberOfDeads))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NumberOfDyings))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NumberOfAlives))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Pause)
-                            .addComponent(Start)
-                            .addComponent(Reset))
-                        .addGap(19, 19, 19)))
-                .addContainerGap())
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(NumberOfAlives))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(NumberOfDyings))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel1))
+                                        .addGap(30, 30, 30)
+                                        .addComponent(NumberOfDeads)))
+                                .addContainerGap())))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(Start)
+                .addComponent(startButton)
                 .addGap(18, 18, 18)
-                .addComponent(Pause)
+                .addComponent(pauseButton)
                 .addGap(18, 18, 18)
-                .addComponent(Reset)
+                .addComponent(resetButton)
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -264,7 +358,29 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(NumberOfDeads))
-                .addContainerGap(976, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(speedSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(636, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -272,32 +388,84 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         //lineX = 0;
     }//GEN-LAST:event_formComponentShown
 
-    private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         //unfreezing the timer
         animTimer.start();
-    }//GEN-LAST:event_StartActionPerformed
+    }//GEN-LAST:event_startButtonActionPerformed
 
-    private void PauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PauseActionPerformed
+    private void pauseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseButtonActionPerformed
         //unfreezing the timer
         animTimer.stop();
-    }//GEN-LAST:event_PauseActionPerformed
+    }//GEN-LAST:event_pauseButtonActionPerformed
 
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        //reseting(making a blank grid)
+        grid = new int[rows][columns];
+    }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //adding a square starting at the middle e.g.(20,20) in a 40 by 40 grid
+        //starting point is in the middle
+        int startingPoint = (rows + 1)/2 - 1;
+        for(int i = startingPoint; i <= (startingPoint + 1); i++){
+            for(int j = startingPoint; j <= (startingPoint + 1); j++){
+                grid[i][j] = ON;
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //adding a blinker at the middle x value - 1
+        //starting point is in the middle
+        int startingPoint = (rows + 1)/2 - 1;
+        for(int i = startingPoint; i <= startingPoint + 2; i+=2){
+            for(int j = startingPoint; j <= startingPoint + 2; j+=2){
+                grid[i][j] = ON;
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //adding a rhombus at  the middle x - 1
+        //starting point is in the middle
+        int startingPoint = (rows + 1)/2 - 1;
+        for(int i = startingPoint; i <= startingPoint + 1; i++){
+            for(int j = startingPoint; j <= startingPoint + 2; j+=2){
+                grid[i][j] = ON;
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NumberOfAlives;
     private javax.swing.JLabel NumberOfDeads;
     private javax.swing.JLabel NumberOfDyings;
-    private javax.swing.JButton Pause;
-    private javax.swing.JButton Reset;
-    private javax.swing.JButton Start;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton pauseButton;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JSlider speedSlider;
+    private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
 
     // Method to toggle the cell state between OFF and ON (you can modify to include DYING if needed)
@@ -311,10 +479,21 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     
     //updating grid
     public void update(){
+        //if the user changed the size
+       if(rows != Integer.parseInt(jTextField1.getText())){
+            //checking grid size, by getting the value of text field
+            grid = new int[Integer.parseInt(jTextField1.getText())][Integer.parseInt(jTextField1.getText())];
+            //reseting rows and columns
+            rows = Integer.parseInt(jTextField1.getText());
+            columns = Integer.parseInt(jTextField1.getText());
+            //updating the new cell size
+            CELL_SIZE = 600 / rows;
+       }
+       //applying rules
        grid = SimulationEngine.applyRules(rows,columns,grid);
        //getting the counts of On, Off or dying cells, the order: aliveCount, dyingCount, deadCount]
        int[] count = SimulationEngine.getCellCounts(grid);
-       
+       //setting them on screen
        NumberOfAlives.setText("" + count[0]);
        NumberOfDyings.setText("" + count[1]);
        NumberOfDeads.setText("" + count[2]);
@@ -335,6 +514,9 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
             toggleCell(y, x); // Toggle cell state
             repaint();  // Repaint the panel to reflect the change
        }
+        //updating the speed
+        int newSpeed = speedSlider.getValue();
+        animTimer.setDelay(newSpeed);
     }
 
     /**
