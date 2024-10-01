@@ -58,6 +58,8 @@ public class FrameForGame extends javax.swing.JFrame implements CardSwitcher {
                 gp.requestFocusInWindow();
             }
         });
+        //setting title for JFrame
+        setTitle("Brian's Brain Simulation");
     }
 
     private void addPanels() {
