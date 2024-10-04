@@ -46,17 +46,17 @@ public class InfoPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(350, 350, 350)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(365, Short.MAX_VALUE)
                 .addComponent(backButton)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGap(363, 363, 363))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(571, Short.MAX_VALUE)
+                .addContainerGap(541, Short.MAX_VALUE)
                 .addComponent(backButton)
-                .addContainerGap())
+                .addGap(36, 36, 36))
         );
     }// </editor-fold>//GEN-END:initComponents
 
