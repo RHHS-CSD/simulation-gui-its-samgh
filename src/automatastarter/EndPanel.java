@@ -93,7 +93,6 @@ public class EndPanel extends javax.swing.JPanel {
         switcher.switchToCard(IntroPanel.CARD_NAME);
     }//GEN-LAST:event_againButtonActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton againButton;
     private javax.swing.JButton jButton1;
