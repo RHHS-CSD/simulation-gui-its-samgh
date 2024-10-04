@@ -21,6 +21,8 @@ public class EndPanel extends javax.swing.JPanel {
     public EndPanel(CardSwitcher p) {
         initComponents();
         switcher = p;
+
+        
     }
 
     /**
@@ -41,16 +43,16 @@ public class EndPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(355, 355, 355)
                 .addComponent(againButton)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(290, Short.MAX_VALUE)
                 .addComponent(againButton)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGap(287, 287, 287))
         );
     }// </editor-fold>//GEN-END:initComponents
 

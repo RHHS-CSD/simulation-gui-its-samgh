@@ -7,7 +7,14 @@ package automatastarter;
 
 import utils.CardSwitcher;
 import java.awt.CardLayout;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -16,12 +23,54 @@ import javax.swing.JPanel;
 public class IntroPanel extends javax.swing.JPanel {
         public static final String CARD_NAME = "intro";
     CardSwitcher switcher = null;
+    
+    //This is the parent panel
+    Timer animTimer;
+    // Keep track of the current rotation angle
+    private double angle = 0; 
+    //used for extraction of image from the jlabel
+    private Image image;
+    
     /**
      * Creates new form IntroPanel
      */
     public IntroPanel(CardSwitcher p) {
         initComponents();
         switcher = p;
+        
+        // Extract the image from jLabel1 and hide the label
+        image = ((ImageIcon) jLabel1.getIcon()).getImage();
+        //hiding the Jlabel since it is painted twice
+        jLabel1.setVisible(false);
+        //create and start a Timer for animation
+        animTimer = new Timer(200, new AnimTimerTick());
+        animTimer.start();
+    }
+    
+    public void paintComponent(Graphics g) {
+        // Ensures the background and other components are painted correctly
+        super.paintComponent(g); 
+
+        // Create a Java2D version of g.
+        Graphics2D g2d = (Graphics2D) g.create();
+        
+        //cordinates of the image
+        int x = jLabel1.getX();
+        int y = jLabel1.getY();
+        int imageWidth = image.getWidth(this);
+        int imageHeight = image.getHeight(this);
+
+        // Get the center of the label
+        int cx = x + imageWidth / 2;
+        int cy = y + imageHeight / 2;
+
+        // Apply rotation around the center of the image
+        g2d.rotate(Math.toRadians(angle), cx, cy);
+
+        // Draw the image
+        g2d.drawImage(image, x, y, this);
+        // Dispose of the Graphics2D object when done
+        g2d.dispose();
     }
 
     /**
@@ -35,15 +84,16 @@ public class IntroPanel extends javax.swing.JPanel {
 
         GameButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        GameButton.setText("Game");
+        GameButton.setText("Brain's Brain");
         GameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GameButtonActionPerformed(evt);
             }
         });
 
-        infoButton.setText("I don't know why I'm here");
+        infoButton.setText("Info Panel");
         infoButton.setToolTipText("");
         infoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,28 +101,34 @@ public class IntroPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/automatastarter/Brian_Griffin.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(GameButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(infoButton)))
-                .addContainerGap(144, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(GameButton)
+                    .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(183, 183, 183)
+                .addComponent(jLabel1)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(GameButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(infoButton)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(GameButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(infoButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel1)))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -88,5 +144,19 @@ public class IntroPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GameButton;
     private javax.swing.JButton infoButton;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+        private class AnimTimerTick implements ActionListener {
+        //using timer
+        public void actionPerformed(ActionEvent ae) {
+            // Update the angle for rotation
+            angle += 5;
+            if (angle >= 360) {
+                // Reset angle after a full rotation
+                angle = 0;  
+            }
+            //force redraw
+            repaint();
+        }
+    }
 }

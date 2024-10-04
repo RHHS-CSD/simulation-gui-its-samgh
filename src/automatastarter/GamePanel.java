@@ -83,8 +83,8 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         grid = SimulationEngine.initializeGrid(rows, columns);
         
         //setting the speed minimum(1) and maximum(20) for the slider
-        speedSlider.setMinimum(100);
-        speedSlider.setMaximum(1500);
+        speedSlider.setMinimum(20);
+        speedSlider.setMaximum(1200);
         
         /* old code
         //set up the key bindings
@@ -495,7 +495,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                 rows = Integer.parseInt(jTextField1.getText());
                 columns = Integer.parseInt(jTextField1.getText());
                 //updating the new cell size
-                CELL_SIZE = 600 / rows;
+                CELL_SIZE = getHeight() / rows;
             }
        }
 
