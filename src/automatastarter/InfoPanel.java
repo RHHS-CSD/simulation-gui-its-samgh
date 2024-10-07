@@ -130,7 +130,7 @@ public class InfoPanel extends javax.swing.JPanel {
         jLabel22.setText("Customize the Grid: You can manually toggle cells between Off and On states by clicking on the grid before starting the simulation. ");
 
         jLabel23.setFont(new java.awt.Font("Marker Felt", 1, 13)); // NOI18N
-        jLabel23.setText("Commo Patterns");
+        jLabel23.setText("Common Patterns");
 
         jLabel24.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         jLabel24.setText("Rhombus: A group of cells that move diagonally across the grid with symmetrical patterns in the rhombus.");
