@@ -24,11 +24,11 @@ public class IntroPanel extends javax.swing.JPanel {
     public static final String CARD_NAME = "intro";
     CardSwitcher switcher = null;
     
-    //This is the parent panel
+    // this is the parent panel
     Timer animTimer;
-    // Keep track of the current rotation angle
+    // keeping track of the current rotation angle
     private double angle = 0; 
-    //used for extraction of image from the jlabel
+    // used for extraction of image from the jlabel
     private Image image;
     
     /**
