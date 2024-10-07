@@ -282,8 +282,8 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        jLabel12.setText("*600 should be divisible be new length");
+        jLabel12.setFont(new java.awt.Font("Helvetica Neue", 0, 9)); // NOI18N
+        jLabel12.setText("*600(height) should be divisible be new length");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -319,7 +319,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                                             .addComponent(NumberOfDeads))))
                                 .addGap(17, 17, 17))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(59, 603, Short.MAX_VALUE)
+                .addGap(59, 591, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,7 +394,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(backButton)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
