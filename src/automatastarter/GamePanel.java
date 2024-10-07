@@ -484,25 +484,30 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
 
     // Method to toggle the cell state between OFF and ON (you can modify to include DYING if needed)
     private void toggleCell(int row, int col) {
+        //if dead, make it alive
         if (grid[row][col] == OFF) {
             grid[row][col] = ON;
-        } else {
+        }
+        //otherwise change its status to off
+        else {
             grid[row][col] = OFF;
         }
     }
     
     //checcking if the string can be converted to integer, if it caceched an error it should return false
-    public boolean isInteger( String input ) {
-    try {
+    private boolean isInteger( String input ) {
+        // try to cast integer from string
+        try {
         Integer.parseInt( input );
         return true;
     }
+    //if it catched an error return false
     catch( Exception e ) {
         return false;
     }
 }
     //updating grid
-    public void update(){
+    private void update(){
         //checking if the string can be converted to intger, otherwise don't change the grid size
         if(isInteger(jTextField1.getText())){
             //if the user changed the size

@@ -63,6 +63,7 @@ public class FrameForGame extends javax.swing.JFrame implements CardSwitcher {
     }
 
     private void addPanels() {
+        //adding panels to the frame
         gp = new GamePanel(this);
         cardPanel.add(gp,GamePanel.CARD_NAME);
         cardPanel.add(new EndPanel(this),EndPanel.CARD_NAME);

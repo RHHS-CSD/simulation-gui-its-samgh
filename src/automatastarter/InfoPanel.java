@@ -34,6 +34,30 @@ public class InfoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         backButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -42,19 +66,187 @@ public class InfoPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Marker Felt", 1, 18)); // NOI18N
+        jLabel1.setText("About Brian’s Brain");
+
+        jLabel2.setFont(new java.awt.Font("Marker Felt", 1, 13)); // NOI18N
+        jLabel2.setText("History:");
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel3.setText("Brian's Brain is a cellular automaton developed by Brian Silverman in the 1990s.  ");
+
+        jLabel6.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel6.setText("It is a variant of John Conway’s Game of Life but introduces a three-state system giving it a unique twist in how cells transition  through life and death.");
+
+        jLabel5.setFont(new java.awt.Font("Marker Felt", 1, 13)); // NOI18N
+        jLabel5.setText("Rules:");
+
+        jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel8.setText("In Brian's Brain, the simulation grid consists of cells that can be in one of three states:  ");
+
+        jLabel9.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel9.setText("On (Living): A cell is currently active. ");
+
+        jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel10.setText("Dying: A cell was alive in the previous generation and is now in the process of dying. ");
+
+        jLabel11.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel11.setText("Off (Dead): A cell is inactive. ");
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel4.setText("The transitions between these states follow these rules:  ");
+
+        jLabel12.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel12.setText("A cell that is On will always transition to Dying in the next step. ");
+
+        jLabel13.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel13.setText("A cell that is Dying will always transition to Off in the next step. ");
+
+        jLabel14.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel14.setText("A cell that is Off will turn On if exactly two of its neighbors are On; otherwise, it stays Off. ");
+
+        jLabel15.setFont(new java.awt.Font("Marker Felt", 1, 13)); // NOI18N
+        jLabel15.setText("How to Use This Application:");
+
+        jLabel16.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel16.setText("Speed Control: Use the speed slider to adjust the speed of the simulation (To the left it slows down the steps and to the right it increases speed).");
+
+        jLabel17.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel17.setText("Blinkers: A repeating pattern of cells turning on and off (Until all of them die). ");
+
+        jLabel18.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel18.setText("Squares: A group of cells that move diagonally across the grid. ");
+
+        jLabel19.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel19.setText("Start the Simulation: From the main screen, press the \"Start\" button to begin the simulation (Cells will use the rules above).");
+
+        jLabel20.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel20.setText("Pause/Resume: You can pause or resume the simulation at any time using the \"Pause\" button. ");
+
+        jLabel21.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel21.setText("Reset: Press the \"Reset\" button to clear the grid.");
+
+        jLabel22.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel22.setText("Customize the Grid: You can manually toggle cells between Off and On states by clicking on the grid before starting the simulation. ");
+
+        jLabel23.setFont(new java.awt.Font("Marker Felt", 1, 13)); // NOI18N
+        jLabel23.setText("Commo Patterns");
+
+        jLabel24.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        jLabel24.setText("Rhombus: A group of cells that move diagonally across the grid with symmetrical patterns in the rhombus.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addGap(363, 363, 363))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backButton)
+                        .addGap(363, 363, 363))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6))
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(288, 288, 288)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel4)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel24))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(541, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addGap(36, 36, 36))
         );
@@ -67,5 +259,29 @@ public class InfoPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

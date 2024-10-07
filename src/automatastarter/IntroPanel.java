@@ -43,7 +43,7 @@ public class IntroPanel extends javax.swing.JPanel {
         // hiding the Jlabel since it is painted twice
         jLabel1.setVisible(false);
         // create and start a Timer for animation
-        animTimer = new Timer(200, new AnimTimerTick());
+        animTimer = new Timer(20, new AnimTimerTick());
         animTimer.start();
     }
     
@@ -60,7 +60,7 @@ public class IntroPanel extends javax.swing.JPanel {
         int imageWidth = image.getWidth(this);
         int imageHeight = image.getHeight(this);
 
-        // Get the center of the label
+        // get the coordinates of the center of the label
         int cx = x + imageWidth / 2;
         int cy = y + imageHeight / 2;
 
@@ -182,7 +182,7 @@ public class IntroPanel extends javax.swing.JPanel {
         //using timer
         public void actionPerformed(ActionEvent ae) {
             // update the angle for rotation
-            angle += 5;
+            angle += 1;
             if (angle >= 360) {
                 // reset angle after a full rotation
                 angle = 0;  
