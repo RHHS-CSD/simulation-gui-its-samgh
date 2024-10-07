@@ -49,7 +49,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     // Size of each cell in the grid
     private static int CELL_SIZE = 15; 
     
-    /*
+    /* old unused code
     // Image img1 = Toolkit.getDefaultToolkit().getImage("yourFile.jpg");
     BufferedImage img1;
     //variables to control your animation elements
