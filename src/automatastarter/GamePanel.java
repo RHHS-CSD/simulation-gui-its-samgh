@@ -48,7 +48,6 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     int rows, columns;
     // Size of each cell in the grid
     private static int CELL_SIZE = 15; 
-    //Remark: if the user resizes to a number that is not divisible by 600(the height of the panel) it will cause a gap
     
     /* old unused code
     // Image img1 = Toolkit.getDefaultToolkit().getImage("yourFile.jpg");
@@ -185,6 +184,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         jLabel11 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -282,6 +282,9 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
+        jLabel12.setText("*600 should be divisible be new length");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -316,7 +319,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                                             .addComponent(NumberOfDeads))))
                                 .addGap(17, 17, 17))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(59, 618, Short.MAX_VALUE)
+                .addGap(59, 603, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +343,8 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                                 .addComponent(jLabel8)
                                 .addComponent(jLabel7))
                             .addComponent(jLabel10)
-                            .addComponent(jLabel11))
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12))
                         .addGap(22, 22, 22))))
         );
         layout.setVerticalGroup(
@@ -382,13 +386,15 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                 .addComponent(jLabel10)
                 .addGap(8, 8, 8)
                 .addComponent(jButton3)
-                .addGap(18, 18, 18)
+                .addGap(5, 5, 5)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(backButton)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -464,6 +470,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -512,13 +519,17 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
         if(isInteger(jTextField1.getText())){
             //if the user changed the size
             if(rows != Integer.parseInt(jTextField1.getText())){
-                //checking grid size, by getting the value of text field
-                grid = new int[Integer.parseInt(jTextField1.getText())][Integer.parseInt(jTextField1.getText())];
-                //reseting rows and columns
-                rows = Integer.parseInt(jTextField1.getText());
-                columns = Integer.parseInt(jTextField1.getText());
-                //updating the new cell size
-                CELL_SIZE = getHeight() / rows;
+                //Remark: if the user resizes to a number that is not divisible by 600(the height of the panel) it will not change the size
+                if(600%(Integer.parseInt(jTextField1.getText())) == 0){
+                    //reseting rows and columns
+                    rows = Integer.parseInt(jTextField1.getText());
+                    columns = Integer.parseInt(jTextField1.getText());
+                    //reseting grid size
+                    grid = new int[rows][columns];
+                    //updating the new cell size
+                    CELL_SIZE = getHeight() / rows;
+                }
+
             }
        }
 
