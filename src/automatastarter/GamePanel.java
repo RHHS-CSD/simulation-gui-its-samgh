@@ -110,8 +110,9 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
     }
     */
 
+    @Override
     public void paintComponent(Graphics g) {
-        
+        super.paintComponent(g);
             // Loop through the grid and draw each cell
             for (int row = 0; row < rows; row++) {
                 for (int col = 0; col < columns; col++) {
@@ -140,8 +141,7 @@ public class GamePanel extends javax.swing.JPanel implements MouseListener {
                     g.drawRect(x, y, CELL_SIZE, CELL_SIZE);
                 }
             }
-        /*
-        super.paintComponent(g);
+        /*old code
         if (img1 != null) {
             g.drawImage(img1, x, y, this);
         }
